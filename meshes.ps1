@@ -22,7 +22,10 @@ function DownloadGitHubRepository {
     New-Item $ZipFile -ItemType File -Force
 
     # Sets url
-    $RepositoryZipUrl = "https://api.github.com/repos/$Author/$Name/zipball/$Branch" 
+	#https://codeload.github.com/mmokitanoi/dungeonmeshes/zip/main
+   # $RepositoryZipUrl = "https://api.github.com/repos/$Author/$Name/zipball/$Branch" 
+   #/owner/name/releases/latest/download/asset-name.zip
+    $RepositoryZipUrl = "https://github.com/mmokitanoi/dungeonmeshes/archive/refs/tags/dungeonmeshes.zip" 
 
     # Download the zip 
     Write-Host '== Starting downloading the GitHub Repository'
@@ -43,7 +46,7 @@ if (-not (Test-Path "git-repo.zip" -PathType Leaf)){
     DownloadGitHubRepository `
         -Name               dungeonmeshes `
         -Author             mmokitanoi `
-        -Branch             master `
+        -Branch             main `
         -Location           $PSScriptRoot `
         -ExtractLocation    $PSScriptRoot `
 }
